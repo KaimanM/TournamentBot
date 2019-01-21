@@ -7,10 +7,10 @@ exports.run = (client, message, args) => {
 
     var player = message.mentions.users.first();
 
-    if (data.players.indexOf(player) === -1) {
-      data.players.push(player);
-      message.channel.send(`${player} joined the tournament!`).catch(console.error);
+    if (data.players.indexOf(player.id) === -1) {
+      data.players.push(player.id);
+      message.channel.send(`${client.users.get(player.id)} joined the tournament!`).catch(console.error);
     } else {
-      message.channel.send(`${player} is already in the tournament...`).catch(console.error);
+      message.channel.send(`${client.users.get(player.id)} is already in the tournament...`).catch(console.error);
     }
 }
