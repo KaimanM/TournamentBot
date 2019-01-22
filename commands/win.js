@@ -169,9 +169,39 @@ function handleWin(winnerMember, message, client) {
             }
           ]
         };
-        message.channel.send(`${winner} is the winner!`, {
+        message.channel.send(`${winner} is the winner! He has now taken his place as rightful KING of discord and ${rightNames[rightNames.length-1]} has his role striped!`, {
           embed
         });
+
+
+        //OPTIONAL ROLE CHANGING CODE HERE- THIS IS FOR A CHAMPION ROLE!
+        let champRoleID = "null";
+        champRoleID = client.config.championRoleID; //Comment out for the below code to not execute. No role changes.
+
+        if (champRoleID != null) {
+          // let membersWithRole = message.guild.roles.get(champRoleID).members;
+
+          let role = message.guild.roles.find(r => r.id === champRoleID);
+
+          //Gets user ID of previous owner of the role
+          let membersWithRole = message.guild.roles.get(champRoleID).members.map(m=>m.user.id);
+
+          // Converts the ID previous owner of the class to member
+          let oldChamp = message.guild.members.get(membersWithRole[0]);
+
+          // Removes the champion role from the previous champion
+          oldChamp.removeRole(champRoleID).catch(console.error);
+
+          // Converts the ID of the winner to a member
+          let newChampMember = message.guild.members.get(winner.id);
+
+          // Assigns champion role to winner member
+          newChampMember.addRole(role).catch(console.error);
+        } else {
+          console.log("champ role is still null");
+        }
+
+
 
 
       }
