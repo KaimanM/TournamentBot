@@ -20,13 +20,13 @@ function po2(n) {
 
 exports.run = (client, message, args) => {
 
-    if (po2(data.players.length) == true) {
+    if (po2(data.players.length) == true && data.players.length != 1) {
         data.readyCheck = true;
         shuffle(data.players);
         message.channel.send(`Tournament is ready to start, players have been shuffled, type ?start to play!`);
 
     } else {
-      message.channel.send(`Amount of tournament players is not a power of 2, invite more players.`);
+      message.channel.send(`Amount of tournament players is ${data.players.length} and is not a power of 2, invite more players.`);
     }
 
 }
