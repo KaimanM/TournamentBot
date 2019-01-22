@@ -74,16 +74,106 @@ function handleWin(winnerMember, message, client) {
         remainingRounds = 0;
       }
 
-      message.channel.send(`Round is over. ${remainingRounds} Rounds remain.`);
+      // message.channel.send(`Round is over. ${remainingRounds} Rounds remain.`);
+      if (remainingRounds != 0) {
+
+        var leftNames = [];
+        var rightNames =[];
+
+        for (i=0; i<data.players.length; i+=2) {
+          leftNames.push(`\n${client.users.get(data.players[i])}`);
+          rightNames.push(`\n${client.users.get(data.players[i+1])}`);
+        }
+
+
+        const embed = {
+          "color": 16312092,
+          "thumbnail": {
+            "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+          },
+          "image": {
+            "url": "https://www.gannett-cdn.com/-mm-/cdeb9a9e093b3172aa58ea309e74edcf80bf651f/c=0-77-2911-1722/local/-/media/2016/05/29/Cincinnati/Cincinnati/636001135964333349-Harambe2.jpg?width=3200&height=1680&fit=crop"
+          },
+          "author": {
+            "name": "keemon-bot",
+            "url": "",
+            "icon_url": "https://cdn.discordapp.com/avatars/533314354196774922/fb062eb335f17952224a5379be7786dc.jpg?size=1024"
+          },
+          "fields": [{
+              "name": "🤔",
+              "value": "Here are the remaining games!"
+            },
+            {
+              "name": "Player 1",
+              "value": `${leftNames}`,
+              "inline": true
+            },
+            {
+              "name": "Player 2",
+              "value": `${rightNames}`,
+              "inline": true
+            }
+          ]
+        };
+        message.channel.send(`Round is over. ${remainingRounds} Rounds remain.`, {
+          embed
+        });
+      }
 
       // if there is one player after winners have been moved to playerlist, they are the winner! Resets the tournament.
       if (data.players.length == 1) {
-        message.channel.send(`${client.users.get(data.players[0])} is the winner!`);
+
+        // used for handling output rich embed
+        var winner = client.users.get(data.players[0]);
+        var rightNames =[];
+
+        for (i=0; i<data.losers.length; i++) {
+          rightNames.push(`\n${client.users.get(data.losers[i])}`);
+        }
+
+        // resets tournament
         data.players = [];
         data.winners = [];
         data.losers = [];
         data.readyCheck = false;
         data.roundNo = 0;
+
+
+        // output richembed
+        const embed = {
+          "color": 16312092,
+          "thumbnail": {
+            "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+          },
+          "image": {
+            "url": "https://i.imgur.com/oCTgA.jpg&fit=crop"
+          },
+          "author": {
+            "name": "keemon-bot",
+            "url": "",
+            "icon_url": "https://cdn.discordapp.com/avatars/533314354196774922/fb062eb335f17952224a5379be7786dc.jpg?size=1024"
+          },
+          "fields": [{
+              "name": "🤔",
+              "value": "Here are the results!"
+            },
+            {
+              "name": "1v1 CHAMPION",
+              "value": `${winner}`,
+              "inline": true
+            },
+            {
+              "name": "GARBAGE",
+              "value": `${rightNames}`,
+              "inline": true
+            }
+          ]
+        };
+        message.channel.send(`${winner} is the winner!`, {
+          embed
+        });
+
+
       }
     } else { // if there is more than one player in the playerlist, it calculates remaining matches.
 
