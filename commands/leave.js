@@ -1,7 +1,8 @@
+// Calling Global Data
 var data = require('./../data.js');
 
+// Removes the player from the tournament if they're currently in the playerlist.
 exports.run = (client, message, args) => {
-  // message.channel.send("pong!").catch(console.error);
   var index = data.players.indexOf(message.author.id);
   if (index > -1) {
     data.players.splice(index, 1);
@@ -11,6 +12,3 @@ exports.run = (client, message, args) => {
   }
 
 }
-
-// module.exports = { test: players };
-// module.exports.players = [];

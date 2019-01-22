@@ -1,5 +1,9 @@
+// Shuffle js is used to shuffle the current player list.
+
+// Calling Global Data
 var data = require('./../data.js');
 
+// Shuffle function
 function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -21,6 +25,5 @@ exports.run = (client, message, args) => {
       users.push(client.users.get(data.players[i]));
     }
 
-    // message.channel.send(`Current Players: ${data.players}`);
     message.channel.send(`Player shuffled: ${users}`);
 }

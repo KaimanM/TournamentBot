@@ -1,7 +1,7 @@
+// Calling Global Data
 var data = require('./../data.js');
 
-
-
+// Starts the tourament setting the round to 1.
 exports.run = (client, message, args) => {
 
 

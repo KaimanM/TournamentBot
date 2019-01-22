@@ -1,8 +1,7 @@
 // handles self joining.
-
 var data = require('./../data.js');
 
-
+// adds the current player to the playerlist
 exports.run = (client, message, args) => {
 
     if (data.players.indexOf(message.author.id) === -1) {

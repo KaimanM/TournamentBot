@@ -1,5 +1,7 @@
+// Calling Global Data
 var data = require('./../data.js');
 
+// Prints playerlist
 exports.run = (client, message, args) => {
 
     var users = [];
@@ -8,6 +10,5 @@ exports.run = (client, message, args) => {
       users.push(client.users.get(data.players[i]));
     }
 
-    // message.channel.send(`Current Players: ${data.players}`);
     message.channel.send(`Current Players: ${users}`);
 }
