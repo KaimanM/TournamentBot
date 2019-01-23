@@ -66,10 +66,6 @@ the bot should now run.
 
 * **Kaiman Mehmet** - [Github](https://github.com/KaimanM)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * A majority of how to create this project was learned from [AnIdiotsGuide](https://anidiots.guide/).
