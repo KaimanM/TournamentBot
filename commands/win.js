@@ -169,7 +169,7 @@ function handleWin(winnerMember, message, client) {
             }
           ]
         };
-        message.channel.send(`${winner} is the winner! He has now taken his place as rightful KING of discord and ${rightNames[rightNames.length-1]} has his role striped!`, {
+        message.channel.send(`${winner} is the winner! They are the Discord 1v1 Champion!`, {
           embed
         });
 
@@ -186,11 +186,19 @@ function handleWin(winnerMember, message, client) {
           //Gets user ID of previous owner of the role
           let membersWithRole = message.guild.roles.get(champRoleID).members.map(m=>m.user.id);
 
-          // Converts the ID previous owner of the class to member
-          let oldChamp = message.guild.members.get(membersWithRole[0]);
+          if (membersWithRole[0] != null) {
+            // Converts the ID previous owner of the class to member
+            let oldChamp = message.guild.members.get(membersWithRole[0]);
 
-          // Removes the champion role from the previous champion
-          oldChamp.removeRole(champRoleID).catch(console.error);
+            if (oldChamp.id == winner.id) { // Checks if the new winner is the same as the old winner
+              // message.channel.send(`Champ has defended their title!`);
+            } else {
+              // Removes the champion role from the previous champion
+              oldChamp.removeRole(champRoleID).catch(console.error);
+            }
+
+
+          }
 
           // Converts the ID of the winner to a member
           let newChampMember = message.guild.members.get(winner.id);
