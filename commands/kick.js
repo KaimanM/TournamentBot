@@ -1,20 +1,29 @@
-exports.run = (client, message, [mention, ...reason]) => {
-  const modRole = message.guild.roles.find(role => role.name === "Mods");
-  if (!modRole)
-    return console.log("The Mods role does not exist");
+// Calling Global Data
+var data = require('./../data.js');
 
-  if (!message.member.roles.has(modRole.id))
-    return message.reply("You can't use this command.");
+// Handles kicking players out of the tournament.
+exports.run = (client, message, args) => {
 
-  if (message.mentions.members.size === 0)
-    return message.reply("Please mention a user to kick");
 
-  if (!message.guild.me.hasPermission("KICK_MEMBERS"))
-    return message.reply("");
+  var player = message.mentions.users.first();
 
-  const kickMember = message.mentions.members.first();
 
-  kickMember.kick(reason.join(" ")).then(member => {
-    message.reply(`${member.user.username} was succesfully kicked.`);
-  });
-};
+  if (player != null) { // Checks if there has been a mention of a user
+
+    var index = data.players.indexOf(player.id);
+
+    if (data.readyCheck == false) { // checks if there is a tournament in progress
+      if (index === -1) {
+        message.channel.send(`${client.users.get(player.id)} was not in the tourament!`).catch(console.error);
+      } else {
+        data.players.splice(index, 1);
+        message.channel.send(`${client.users.get(player.id)} has been removed from the tourament!`).catch(console.error);
+      }
+    } else {
+      message.channel.send(`Cannot kick players when a tournament is in progress.`).catch(console.error);
+    }
+
+  } else {
+    message.channel.send(`Please mention a user to kick from the tournament`);
+  }
+}
