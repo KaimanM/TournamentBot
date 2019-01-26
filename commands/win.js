@@ -91,9 +91,9 @@ function handleWin(winnerMember, message, client) {
           "thumbnail": {
             "url": "https://cdn.discordapp.com/embed/avatars/0.png"
           },
-          "image": {
-            "url": "https://www.gannett-cdn.com/-mm-/cdeb9a9e093b3172aa58ea309e74edcf80bf651f/c=0-77-2911-1722/local/-/media/2016/05/29/Cincinnati/Cincinnati/636001135964333349-Harambe2.jpg?width=3200&height=1680&fit=crop"
-          },
+          // "image": {
+          //   "url": "https://www.gannett-cdn.com/-mm-/cdeb9a9e093b3172aa58ea309e74edcf80bf651f/c=0-77-2911-1722/local/-/media/2016/05/29/Cincinnati/Cincinnati/636001135964333349-Harambe2.jpg?width=3200&height=1680&fit=crop"
+          // },
           "author": {
             "name": "keemon-bot",
             "url": "",
@@ -145,9 +145,9 @@ function handleWin(winnerMember, message, client) {
           "thumbnail": {
             "url": "https://cdn.discordapp.com/embed/avatars/0.png"
           },
-          "image": {
-            "url": "https://i.imgur.com/oCTgA.jpg&fit=crop"
-          },
+          // "image": {
+          //   "url": "https://i.imgur.com/oCTgA.jpg&fit=crop"
+          // },
           "author": {
             "name": "keemon-bot",
             "url": "",
@@ -158,12 +158,12 @@ function handleWin(winnerMember, message, client) {
               "value": "Here are the results!"
             },
             {
-              "name": "1v1 CHAMPION",
+              "name": "Winner!",
               "value": `${winner}`,
               "inline": true
             },
             {
-              "name": "GARBAGE",
+              "name": "Losers!",
               "value": `${rightNames}`,
               "inline": true
             }

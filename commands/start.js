@@ -17,16 +17,16 @@ exports.run = (client, message, args) => {
       leftNames.push(`\n${client.users.get(data.players[i])}`);
       rightNames.push(`\n${client.users.get(data.players[i+1])}`);
     }
-    
+
     //richembed
     const embed = {
       "color": 16312092,
       "thumbnail": {
         "url": "https://cdn.discordapp.com/embed/avatars/0.png"
       },
-      "image": {
-        "url": "https://www.gannett-cdn.com/-mm-/cdeb9a9e093b3172aa58ea309e74edcf80bf651f/c=0-77-2911-1722/local/-/media/2016/05/29/Cincinnati/Cincinnati/636001135964333349-Harambe2.jpg?width=3200&height=1680&fit=crop"
-      },
+      // "image": {
+      //   "url": "https://www.gannett-cdn.com/-mm-/cdeb9a9e093b3172aa58ea309e74edcf80bf651f/c=0-77-2911-1722/local/-/media/2016/05/29/Cincinnati/Cincinnati/636001135964333349-Harambe2.jpg?width=3200&height=1680&fit=crop"
+      // },
       "author": {
         "name": "keemon-bot",
         "url": "",
