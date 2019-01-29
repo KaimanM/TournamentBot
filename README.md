@@ -60,7 +60,7 @@ the bot should now run.
 
 ## Built With
 
-* [DiscordJS](http://www.dropwizard.io/1.0.2/docs/) - The Node js module used
+* [DiscordJS](https://discord.js.org/#/) - The Node js module used
 
 ## Authors
 
